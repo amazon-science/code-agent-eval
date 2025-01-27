@@ -1,0 +1,97 @@
+prompts:
+  - name: patch-equivalence
+    parameters: [patch1, patch2]
+    text: |
+      You are tasked with comparing two git patches in unified diff format to determine if they are functionally equivalent. Your goal is to analyze the changes made in each patch and decide whether they result in the same functional outcome, ignoring non-functional differences such as comments, coding style, and formatting.
+
+      Here are the two patches you need to compare:
+
+      <patch1>
+      {patch1}
+      </patch1>
+
+      <patch2>
+      {patch2}
+      </patch2>
+
+      To analyze these patches:
+
+      1. Carefully read through each patch, focusing on the actual code changes (lines starting with '+' or '-').
+      2. Identify the main functional changes in each patch.
+      3. Compare the functional changes between the two patches.
+      4. Ignore differences that don't affect core functionality, such as:
+        - Comments
+        - Changes to test files
+        - Whitespace changes
+        - Variable naming for variables only used locally
+        - Code formatting or style changes
+
+      Provide your analysis and reasoning in the following structure:
+
+      <analysis>
+      1. Functional changes in Patch 1:
+        [List the main functional changes]
+
+      2. Functional changes in Patch 2:
+        [List the main functional changes]
+
+      3. Comparison of functional changes:
+        [Explain how the functional changes in both patches relate to each other]
+
+      4. Reasoning:
+        [Provide your reasoning for why the patches are or are not functionally equivalent]
+      </analysis>
+
+      After your analysis, provide your final determination on whether the two patches are functionally equivalent. Your determination should either be <prediction>yes</prediction> or <prediction>no</prediction>.
+
+      Also provide your confidence level on a scale of 1-100 in the example format: <confidence>90</confidence>
+
+      Remember to focus solely on the functional aspects of the code changes and ignore stylistic or formatting differences. Base your determination on whether the end result of applying either patch would lead to the same functional behavior in the code. Note that changes may occur in different parts of the code and still be functionally equivalent. However, the same files should be modified.
+
+  - name: semantic-equivalence
+    parameters: [snippet1, snippet2]
+    text: |
+      You are tasked with comparing two code snippets to determine if they are semantically equivalent. Your goal is to analyze the code in each and decide whether they would result in the same output for some inputs, ignoring non-functional differences such as comments, coding style, and formatting.
+
+      Here are the two Python code snippets you need to compare:
+
+      <snippet1>
+      {snippet1}
+      </snippet1>
+
+      <snippet2>
+      {snippet2}
+      </snippet2>
+
+      To analyze these code snippets:
+
+      1. Carefully read through each code snippet, focusing on the actual code logic and operations.
+      2. Identify the main functional elements in each snippet.
+      3. Compare the functional elements between the two snippets.
+      4. Ignore differences that don't affect core functionality, such as:
+        - Comments
+        - Whitespace
+        - Variable naming for variables only used locally
+        - Code formatting or style
+
+      Provide your analysis and reasoning in the following structure:
+
+      <analysis>
+      1. Functional elements in Snippet 1:
+        [List the main functional elements]
+
+      2. Functional elements in Snippet 2:
+        [List the main functional elements]
+
+      3. Comparison of functional elements:
+        [Explain how the functional elements in both snippets relate to each other]
+
+      4. Reasoning:
+        [Provide your reasoning for why the snippets are or are not functionally equivalent]
+      </analysis>
+
+      After your analysis, provide your final determination on whether the two code snippets are functionally equivalent. Your determination should either be <prediction>yes</prediction> or <prediction>no</prediction>.
+
+      Also provide your confidence level on a scale of 1-100 in the example format: <confidence>90</confidence>
+
+      Remember to focus solely on the functional aspects of the code and ignore stylistic or formatting differences. Base your determination on whether both snippets would produce the same output for the same input and have the same side effects. Note that the code may be structured differently or use different approaches while still being functionally equivalent.

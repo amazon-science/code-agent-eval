@@ -1,0 +1,98 @@
+prompts:
+  - name: patch-analysis-without-hints
+    parameters: [issue_description, patch]
+    text: |
+      You are tasked with analyzing an issue description and a corresponding patch to determine if the patch successfully resolves the described issue. Your goal is to carefully examine the issue details and the changes proposed in the patch, then decide whether the patch adequately addresses the problem.
+
+      Here are the issue description and patch you need to analyze:
+      <issue_description>
+      {issue_description}
+      </issue_description>
+
+      <patch>
+      {patch}
+      </patch>
+
+      To analyze the issue and patch:
+
+      1. Carefully read the issue description to understand the problem that needs to be solved.
+      2. Examine the patch, focusing on the actual code changes (lines starting with '+' or '-').
+      3. Identify the main functional changes in the patch.
+      4. Compare the functional changes with the requirements outlined in the issue description.
+      5. Consider whether the patch fully addresses all aspects of the issue.
+
+      Provide your analysis and reasoning in the following structure:
+
+      <analysis>
+      1. Key points from the issue description:
+        [List the main problems or requirements described in the issue]
+
+      2. Functional changes in the patch:
+        [List the main functional changes introduced by the patch]
+      
+      3. Comparison of issue requirements and patch changes:
+        [Explain how the changes in the patch relate to the requirements of the issue]
+
+      4. Reasoning:
+        [Provide your reasoning for why the patch does or does not fully resolve the issue]
+      </analysis>
+
+
+      After your analysis, provide your final determination on whether the patch resolves the described issue. Your determination should either be <prediction>yes</prediction> or <prediction>no</prediction>.
+
+      Also provide your confidence level on a scale of 1-100 in the following format: <confidence>90</confidence>
+
+      Remember to focus on whether the patch addresses all aspects of the issue described. Consider not only if the patch fixes the immediate problem but also if it adheres to any additional requirements or constraints mentioned in the issue description. Base your determination on whether applying the patch would fully resolve the described issue without introducing new problems or leaving any part of the issue unaddressed.
+
+  - name: patch-analysis-with-hints
+    parameters: [issue_description, hints, patch]
+    text: |
+      You are tasked with analyzing an issue description, related hints, and corresponding patch to determine if the patch successfully resolves the described issue. Your goal is to carefully examine the issue details, the changes proposed in the patch, and the provided hints, then decide whether the patch adequately addresses the problem.
+
+      Here are the issue description, hints, and patch you need to analyze:
+
+      <issue_description>
+      {issue_description}
+      </issue_description>
+
+      <hints>
+      {hints}
+      </hints>
+
+      <patch>
+      {patch}
+      </patch>
+
+      To analyze the issue, patch, and hints:
+
+      1. Carefully read the issue description to understand the problem that needs to be solved.
+      2. Review the hints to gain additional context and suggested solutions.
+      3. Examine the patch, focusing on the actual code changes (lines starting with '+' or '-').
+      4. Identify the main functional changes in the patch.
+      5. Compare the functional changes with the requirements outlined in the issue description and any relevant suggestions from the hints.
+      6. Consider whether the patch fully addresses all aspects of the issue and incorporates appropriate suggestions from the hints.
+
+      Provide your analysis and reasoning in the following structure:
+
+      <analysis>
+      1. Key points from the issue description:
+        [List the main problems or requirements described in the issue]
+
+      2. Relevant suggestions from hints:
+        [Summarize any important suggestions or context provided in the hints]
+
+      3. Functional changes in the patch:
+        [List the main functional changes introduced by the patch]
+
+      4. Comparison of issue requirements, hints, and patch changes:
+        [Explain how the changes in the patch relate to the requirements of the issue and suggestions from the hints]
+
+      5. Reasoning:
+        [Provide your reasoning for why the patch does or does not fully resolve the issue, considering both the issue description and hints]
+      </analysis>
+
+      After your analysis, provide your final determination on whether the patch resolves the described issue. Your determination should either be <prediction>yes</prediction> or <prediction>no</prediction>.
+
+      Also provide your confidence level on a scale of 1-100 in the following format: <confidence>90</confidence>
+
+      Remember to focus on whether the patch addresses all aspects of the issue described and incorporates relevant suggestions from the hints. Consider not only if the patch fixes the immediate problem but also if it adheres to any additional requirements or constraints mentioned in the issue description or suggested in the hints. Base your determination on whether applying the patch would fully resolve the described issue without introducing new problems or leaving any part of the issue unaddressed, while also taking into account the context and suggestions provided in the hints.

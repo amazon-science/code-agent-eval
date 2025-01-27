@@ -1,0 +1,71 @@
+prompts:
+  - name: function-validity
+    parameters: [source]
+    text: |
+      You are a code analysis assistant. Your task is to analyze the following source code and determine if it has any syntax errors.
+
+      <source>
+      {source}
+      </source>
+
+      Please thoroughly examine the provided source code and respond with one of the following:
+
+      <prediction>yes</prediction>
+      If the code has no syntax errors and is syntactically valid.
+
+      <prediction>no</prediction>
+      If the code has one or more syntax errors.
+
+      In case there are syntax errors, please provide a brief explanation of the errors you identified. Your analysis should focus solely on the syntactic correctness of the code, not its functionality or logic.
+
+  - name: patch-validity
+    parameters: [patch]
+    text: |
+      You are a code analysis assistant. Your task is to examine the following diff patch and determine if it has any syntax errors that would prevent it from being applied successfully.
+
+      <patch>
+      {patch}
+      </patch>
+
+      Please thoroughly analyze the provided diff patch and respond with one of the following:
+
+      <prediction>yes</prediction>
+      If the diff patch has no syntax errors and is structurally correct.
+
+      <prediction>no</prediction>
+      If the diff patch has one or more syntax errors or structural issues.
+
+      If the patch is invalid, please provide a brief explanation of the errors or issues you identified. Your analysis should focus on the syntactic correctness and structure of the diff patch, not the content of the changes or their impact on the code.
+
+      Consider the following aspects in your analysis:
+      1. Syntactic correctness of the code in both the original and modified versions
+      2. Proper language-specific syntax (e.g., correct use of brackets, semicolons, indentation)
+      3. Balanced parentheses, brackets, and braces
+      4. Correct use of language keywords and operators
+      5. Valid variable and function declarations
+      6. Proper termination of statements
+      7. Syntactically correct function calls and method invocations
+
+      Your analysis should focus solely on the syntactic validity of the code within the diff, not the format or structure of the diff itself. Ignore any diff-specific syntax (like +, -, or @@ markers) and concentrate on the actual code content.
+
+      Respond only with the prediction tag and, if applicable, a brief explanation of errors. Do not include any other text in your response.
+
+  - name: syntax-errors
+    parameters: [source]
+    text: |
+      You are a code analysis assistant. Your task is to analyze the following source code and determine if it has any syntax errors.
+
+      <source>
+      {source}
+      </source>
+
+      Please thoroughly examine the provided source code and respond with one of the following:
+
+      <prediction>0</prediction>
+      If the code has no syntax errors and is syntactically valid.
+
+      In case there are syntax errors,
+      - Please provide a brief explanation of the errors you identified.
+      - Your analysis should focus solely on the syntactic correctness of the code, not its functionality or logic. 
+      - Predict the total number of such syntax errors found, e.g., <prediction>5</prediction>.
+   

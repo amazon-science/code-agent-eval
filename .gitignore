@@ -1,0 +1,28 @@
+*~
+*#
+*.swp
+
+*.DS_Store
+
+# Do not track the environment file
+*.env
+
+# Do not track dataset resources.
+/src/llm_agent_evaluation/resources/
+/src/llm_agent_evaluation/resources-dev/
+
+/src/llm_agent_evaluation/experiments/analysis/figures
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+/.coverage
+/.coverage.*
+/.cache
+/.pytest_cache
+/.mypy_cache
+
+/doc/_apidoc/
+/build

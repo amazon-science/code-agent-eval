@@ -1,0 +1,147 @@
+prompts:
+  - name: no-aggregation
+    parameters: [source, tests]
+    text: |
+      You are a code analysis assistant specializing in predicting test outcomes. You are provided with a set of functions/classes and associated tests and your task is to determine whether all of these tests will now pass or not.
+
+      <source>
+      {source}
+      </source>
+
+      Here's the test files containing the relevant test functions or classes.
+      <tests>
+      {tests}
+      </tests>
+
+      Please analyze the provided code and tests for your prediction. Follow these steps:
+
+      1. Carefully review the source code, focusing on the functional aspects.
+      2. Examine the provided tests and their assertions.
+      3. Reason whether each of the assertions in the provided tests, based on the provided source code, will apply or not.
+      4. Make reasonable assumptions about any missing context or dependencies. Note that such assumptions should result in a relatively lower confidence about your final predictions.
+      5. Ignore minor syntactic issues or missing API definitions, focusing on the logic and functionality.
+
+      Provide your analysis in the following format:
+
+      <analysis>
+      [Explain your reasoning about how the patch affects the code's behavior and how it relates to the provided tests. Discuss any potential issues or areas of concern.]
+      </analysis>
+
+      After your analysis, provide your final prediction:
+
+      <prediction>yes</prediction>
+      If you believe all tests will pass after applying the patch.
+
+      <prediction>no</prediction>
+      If you believe one or more tests will fail after applying the patch.
+
+      Also provide your confidence level on a scale of 1-100 in the example format: <confidence>90</confidence>
+
+      Your prediction should be based solely on the functional aspects of the code changes and their potential impact on the provided test cases. Ignore non-functional differences such as comments, coding style, or formatting.
+
+      Respond only with the analysis, confidence and prediction tags as described above. Do not include any other text in your response.
+
+  - name: test-centric
+    parameters: [source, test]
+    text: |
+      You are a code analysis assistant specializing in predicting test outcomes. You are provided with a set of functions after applying a patch and a relevant unit test and your task is to determine whether this test will now pass or not.
+
+      <source>
+      {source}
+      </source>
+
+      Here's the test file containing the relevant test function or class.
+      <test>
+      {test}
+      </test>
+
+      To make your prediction, follow these steps:
+
+      1. Carefully review the given source code, focusing on the functional aspects.
+      2. Consider the provided test cases and how they relate to the source code.
+      3. Reason about whether the provided test case, based on the source code, will pass or fail.
+      4. Ignore syntactic errors or absence of any required APIs or source code, while making the best possible assumptions in this case. Note that such assumptions should result in a relatively lower confidence about your final predictions.
+
+      Provide your analysis and prediction in the following format:
+
+      <analysis>
+      [Explain your analysis of the source code and how they relate to the provided test cases. Discuss any potential issues or areas of concern.]
+      </analysis>
+
+      After your analysis, provide your final determination on whether all test cases pass. Your determination should either be <prediction>yes</prediction> or <prediction>no</prediction>.
+
+      Also provide your confidence level on a scale of 1-100 in the example format: <confidence>90</confidence>
+
+      Remember, your prediction should be based solely on the functional aspects of the code changes and their potential impact on the provided test cases. Ignore any non-functional differences, such as comments, coding style, or formatting.
+
+      Respond only with the analysis, confidence and prediction tags as described above. Do not include any other text in your response.
+
+  - name: test-centric-patch
+    parameters: [patch, test]
+    text: |
+      You are a code analysis assistant specializing in predicting test outcomes. You are provided with a patch and a relevant unit test and your task is to determine whether this test will now pass or not.
+
+      <patch>
+      {patch}
+      </patch>
+
+      Here's the test file containing the relevant test function or class.
+      <test>
+      {test}
+      </test>
+
+      To make your prediction, follow these steps:
+
+      1. Carefully review the given patch, focusing on the functional changes (lines starting with '+' or '-').
+      2. Consider the provided test cases and how they relate to the changes in the patch.
+      3. Reason about whether the provided test case, based on the changes introduced by the patch, will pass or fail.
+      4. Ignore syntactic errors or absence of any required APIs or source code, while making the best possible assumptions in this case. Note that such assumptions should result in a relatively lower confidence about your final predictions.
+
+      Provide your analysis and prediction in the following format:
+
+      <analysis>
+      [Explain your analysis of the patch and how the changes relate to the provided test cases. Discuss any potential issues or areas of concern.]
+      </analysis>
+
+      After your analysis, provide your final determination on whether all test cases will pass after applying the patch. Your determination should either be <prediction>yes</prediction> or <prediction>no</prediction>.
+
+      Also provide your confidence level on a scale of 1-100 in the example format: <confidence>90</confidence>
+
+      Remember, your prediction should be based solely on the functional aspects of the code changes in the patch and their potential impact on the provided test cases. Ignore any non-functional differences, such as comments, coding style, or formatting.
+
+      Respond only with the analysis, confidence and prediction tags as described above. Do not include any other text in your response.
+
+  - name: no-aggregation-patch
+    parameters: [patch, tests]
+    text: |
+      You are a code analysis assistant specializing in predicting test outcomes. You are provided with a patch and associated tests and your task is to determine whether all of these tests will now pass or not.
+
+      <patch>
+      {patch}
+      </patch>
+
+      Here's the test file containing the relevant test functions or classes.
+      <tests>
+      {tests}
+      </tests>
+
+      To make your prediction, follow these steps:
+
+      1. Carefully review the given patch, focusing on the functional changes (lines starting with '+' or '-').
+      2. Consider the provided test cases and how they relate to the changes in the patch.
+      3. Reason about whether the provided test case, based on the changes introduced by the patch, will pass or fail.
+      4. Ignore syntactic errors or absence of any required APIs or source code, while making the best possible assumptions in this case. Note that such assumptions should result in a relatively lower confidence about your final predictions.
+
+      Provide your analysis and prediction in the following format:
+
+      <analysis>
+      [Explain your analysis of the patch and how the changes relate to the provided test cases. Discuss any potential issues or areas of concern.]
+      </analysis>
+
+      After your analysis, provide your final determination on whether all test cases will pass after applying the patch. Your determination should either be <prediction>yes</prediction> or <prediction>no</prediction>.
+
+      Also provide your confidence level on a scale of 1-100 in the example format: <confidence>90</confidence>
+
+      Remember, your prediction should be based solely on the functional aspects of the code changes in the patch and their potential impact on the provided test cases. Ignore any non-functional differences, such as comments, coding style, or formatting.
+
+      Respond only with the analysis, confidence and prediction tags as described above. Do not include any other text in your response.
