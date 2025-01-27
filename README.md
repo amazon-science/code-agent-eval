@@ -1,4 +1,4 @@
-# LLMAgentEvaluation
+# LLM Coding Agent Evaluation
 
 ## Getting Started
 This section describes the prerequisites, and contains instructions to get the project up and running.
