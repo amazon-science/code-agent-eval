@@ -140,7 +140,8 @@ class TestRunner:
 
 
 # if __name__ == '__main__':
-#     runner = TestRunner(pathlib.Path('/home/axyadav/workspace/llmevalws/src/LLMAgentEvaluation/src/llm_agent_evaluation/resources'))
+#     TODO: Add your local path bellow 
+#     runner = TestRunner(pathlib.Path('/my/local/path/llm_agent_evaluation/resources'))
 
 #     PROJECTS = [
 #         'PySnooper',
